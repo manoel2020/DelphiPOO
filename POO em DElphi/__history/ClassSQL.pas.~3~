@@ -1,0 +1,14 @@
+unit ClassSQL;
+
+interface
+
+   //Sql Server.
+type
+   TConSql = Class
+
+      public
+         procedure Salvar;
+   End;
+implementation
+
+end.

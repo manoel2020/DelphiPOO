@@ -1,0 +1,59 @@
+unit Unit2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, ClassCliente,ClassPessoa;
+
+type
+  TForm2 = class(TForm)
+    Button1: TButton;
+    edtNome: TEdit;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm2.Button1Click(Sender: TObject);
+var
+   Pessoa : Tpessoa;
+   Cliente,Cliente2 : TCliente;
+   valor : Currency;
+begin
+   Pessoa  := Tpessoa.Create;
+   Cliente := TCliente.Create;
+   Cliente2 := TCliente.Create('008');
+   try
+//      Pessoa.Nome  := edtNome.Text;
+//      Pessoa.dataNasc := '07/06/1995';
+//      ShowMessage(pessoa.Nome +' - '+IntToStr(pessoa.idade)+' Anos'+#13+
+//      ' Valor de Credito = '+CurrToStr(pessoa2.valorCredito));
+//      ShowMessage(Pessoa.Receber(14));
+//      valor := 13.9;
+//      ShowMessage(pessoa.Receber(valor));
+//      ShowMessage(pessoa.Receber(84,33));
+//      ShowMessage(pessoa.Receber('Manoel Junior Santos Miranda'));
+//      ShowMessage(pessoa.RetornaNome);
+//      ShowMessage(Cliente.RetornaNome);
+//      ShowMessage(Cliente.MetodoAbstrado);
+//      ShowMessage(Cliente.RetornaNome);
+//      ShowMessage(Cliente.Nome);
+
+   finally
+      pessoa.Free;
+      Cliente.Free;
+   end;
+
+end;
+
+end.

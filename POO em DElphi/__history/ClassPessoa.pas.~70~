@@ -1,0 +1,92 @@
+unit ClassPessoa;
+
+interface
+
+uses
+  System.SysUtils;
+
+type
+   TPessoa = class
+      private
+         FNome : String;
+         FEtnia: String;
+         FdataNasc: String;
+         FSexo: String;
+         function getnome:String;
+         procedure setnome(value :string);
+         procedure SetEtnia(const Value: String);
+         procedure SetdataNasc(const Value: String);
+         procedure SetSexo(const Value: String);
+      public
+         property dataNasc: String read FdataNasc write SetdataNasc;
+         property Sexo : String read FSexo write SetSexo;
+         property Etnia :String read FEtnia write SetEtnia;
+         property Nome : String read getNome write setNome;
+         function Idade:integer;
+         function Receber(value:currency):string; overload;
+         function Receber(value:integer):String;  overload;
+         function Receber(a,b:integer):String; overload;
+         function Receber(nome:String):String; overload;
+         function RetornaNome:String; virtual;
+         function MetodoAbstrado:String; abstract;
+   end;
+
+implementation
+
+function Tpessoa.Idade;
+begin
+   Result := Trunc((now -StrToDate(dataNasc)) / 365.25);
+end;
+
+function TPessoa.Receber(value: currency): string;
+begin
+   result := 'Recebi um valor Real: '+CurrToStr(value);
+end;
+
+function TPessoa.Receber(value: integer): String;
+begin
+   Result := 'Recebi um valor inteiro: '+IntToStr(value);
+end;
+
+procedure TPessoa.SetdataNasc(const Value: String);
+begin
+  FdataNasc := Value;
+end;
+
+procedure TPessoa.SetEtnia(const Value: String);
+begin
+  FEtnia := Value;
+end;
+
+function Tpessoa.getnome;
+begin
+   Result := FNome;
+end;
+
+procedure Tpessoa.setnome(value: string);
+begin
+   if(value = '')then
+      raise Exception.Create('O Valor Não pode ser Vazio');
+   FNome := Value;
+end;
+procedure TPessoa.SetSexo(const Value: String);
+begin
+  FSexo := Value;
+end;
+
+function TPessoa.Receber(a, b: integer): String;
+begin
+   Result := 'A soma desses inteiros é: '+ IntToStr((a+b));
+end;
+
+function TPessoa.Receber(nome: String): String;
+begin
+   Result := 'O Nome recebido foi: '+Nome;
+end;
+
+function TPessoa.RetornaNome: String;
+begin
+   Result := 'Eu sou a Classe Tpessoa';
+end;
+
+end.

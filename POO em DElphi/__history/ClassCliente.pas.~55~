@@ -1,0 +1,59 @@
+unit ClassCliente;
+
+interface
+
+uses ClassPessoa;
+
+type
+   //Essa Classe Herda todos os atributos e metodos de TPessoa.
+   TCliente = class(TPessoa)
+   private
+      FvalorCredito: Currency;
+      procedure SetvalorCredito(const Value: Currency);
+   public
+      constructor Create;overload;
+      constructor Create(value:String);overload;
+      property valorCredito:Currency read FvalorCredito write SetvalorCredito;
+      //Reescreve a função da Classe Pai.
+      function RetornaNome:String; override;
+      //Implementando o metodo, assinado na classe TPessoa(PAI);
+      function MetodoAbstrado:String; override;
+   end;
+implementation
+
+{ TCliente }
+
+constructor TCliente.Create;
+begin
+   Nome := 'Novo Cliente';
+end;
+
+constructor TCliente.Create(value: String);
+begin
+   Nome := Value;
+end;
+
+function TCliente.MetodoAbstrado: String;
+begin
+   result := 'Eu sou o metodo abstract da Classe TPessoa(PAI)'+#13+
+   'Implementado na classe TCliente(Filho)'+#13+
+   'Sem ter a necessidade de ter o metodo implementado na classe pai'+#13+
+   'Apenas a sua Assinatura na classe PAI é o Suficiente!!!';
+end;
+
+function TCliente.RetornaNome: String;
+begin
+   //Significa que o metodo é herdado.
+   //se ele esta antes da implementação, significa que primeiro ele vai na
+   //classe aonde esse metodo esta implementado, e executa ele, antes de continuar
+   //a implementação abaixo.
+   inherited;
+   result := 'Eu sou filha de '+Nome;
+end;
+
+procedure TCliente.SetvalorCredito(const Value: Currency);
+begin
+  FvalorCredito := Value;
+end;
+
+end.
